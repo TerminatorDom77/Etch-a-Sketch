@@ -1,16 +1,21 @@
 container = document.getElementById("container");
+const colorOption = document.getElementById("color");
+let color = '';
+colorOption.addEventListener('input', () => {
+    color = colorOption.value;
+})
+
 for (let i = 1; i < 17; i++){
     for (let j = 1; j < 17; j++){
         let div = document.createElement("div");
         div.setAttribute('id', parseInt(i.toString() + j.toString()));
-        //div.textContent = "e";
         div.style.cssText = "flex: 1; min-width: 5.75%; padding-bottom: 35px; border: 1px solid gray;"
         var mouseDown = false;
         var mouseOver = false;
         div.addEventListener('mousedown', () => {
             mouseDown = true;
             if (mouseOver){
-                div.style.backgroundColor = 'red';
+                div.style.backgroundColor = color;
             }
         })
         div.addEventListener('mouseup', () => {
@@ -19,7 +24,7 @@ for (let i = 1; i < 17; i++){
         div.addEventListener('mouseover',() => {
             mouseOver = true;
             if (mouseDown){
-                div.style.backgroundColor = 'red';
+                div.style.backgroundColor = color;
             }
         })
         div.addEventListener('mouseleave', () => {
