@@ -8,10 +8,17 @@ colorOption.addEventListener('input', () => {
 let size = 16 //default size of grid is 16x16 units
 const btn = document.querySelector("button");
 btn.addEventListener("click", () => {
-    size = prompt("What grid size do you want? (x by x)");
-    width = 600 / size - 2; //there's a minus 2 there because the border for the divs will be 1 px on each side
-    createGrid(size, width);
-})
+    size = parseInt(prompt("What grid size do you want? (x by x)"));
+    if (Number.isInteger(size) == false){
+        alert("Please type in a number.");
+    }
+    if (size > 100 || size < 1){
+        alert("Please enter a number from 1-100.");
+    } else {
+        width = 600 / size - 2; //there's a minus 2 there because the border for the divs will be 1 px on each side
+        createGrid(size, width);
+    }
+});
 
 function createGrid(size, width){
     if (container.children != 0){
@@ -35,8 +42,6 @@ function createGrid(size, width){
             div.style.border = `${1}px solid gray`;
             div.style.padding = `${0}px`;
             div.style.flexGrow = 0;
-
-            //Padding is giving the divs extra space
 
             var mouseOver = false;
             var mouseDown = false;
