@@ -1,0 +1,11 @@
+#color, #size {
+    width: 10%;
+}
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-top: 5%;
+    width: 600px;
+    height: 600px;
+}
